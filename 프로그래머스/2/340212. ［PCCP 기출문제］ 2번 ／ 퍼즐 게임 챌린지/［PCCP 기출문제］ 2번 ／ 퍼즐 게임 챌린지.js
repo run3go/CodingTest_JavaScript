@@ -3,9 +3,8 @@ function solution(diffs, times, limit) {
     let right = 100000;
     let level;
     
-    while(left < right) {
-        level = Math.floor((left + right) / 2);
-        let totalTime = diffs.reduce((acc, diff, index) => {
+    const calc = (level) => {
+        return diffs.reduce((acc, diff, index) => {
             if(level >= diff) {
                 acc += times[index];
             } else {
@@ -15,6 +14,11 @@ function solution(diffs, times, limit) {
             }
             return acc;
         }, 0)
+    }
+    
+    while(left < right) {
+        level = Math.floor((left + right) / 2);
+        let totalTime = calc(level)
         if(totalTime > limit) {
             left = level + 1;
         } else if(totalTime === limit) {
@@ -25,15 +29,4 @@ function solution(diffs, times, limit) {
     }
     return right
 }
-
-// 퍼즐 난이도 diff
-// 현재 퍼즐의 소요시간 time_cur
-// 이전 퍼즐의 소요시간 time_prev
-// 숙련도 level
-// 제한시간 limit
-
-// 난이도 <= 숙련도 [time_cur만큼 시간 소요]
-// 난이도 > 숙련도 [diff - level] * [time_prev + time_cur] + time_cur
-
-// 요구값 : 제한 시간 내로 시간을 소요하는 최소 숙련도
 
