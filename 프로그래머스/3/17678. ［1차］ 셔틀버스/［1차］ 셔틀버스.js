@@ -27,6 +27,4 @@ function solution(n, t, m, timetable) {
     return (hour >= 10 ? "" + hour : "0" + hour) + ":" + (minutes >= 10 ? "" + minutes : "0" + minutes);
 }
     
-// 1. 자리가 남아있다면, 버스가 오는 "정확한 시간"에 탐
-// 2. 자리가 없을 경우, 기다리는 승객들 중 가장 늦게 온 승객보다 "1분 빨리"
             
